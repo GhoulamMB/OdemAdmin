@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="using:OdemAdmin.ViewModels"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             x:Class="OdemAdmin.Views.TicketsView"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:TicketsViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+        <Button Text="Create Ticket" Clicked="CreateTicketButton_OnClick"/>
+        <syncfusion:SfDataGrid Grid.Row="1"
+            SelectionMode="Single"
+            AutoGenerateColumnsMode="None"
+            ItemsSource="{Binding Tickets}"
+            GridLinesVisibility="Both"
+            HeaderGridLinesVisibility="Both"
+            ColumnWidthMode="Fill"
+            CellDoubleTapped="SfDataGrid_OnCellDoubleTapped">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridTextColumn HeaderText="Id" MappingName="Id"/>
+                <syncfusion:DataGridTextColumn HeaderText="By" MappingName="CreatedBy.Email"/>
+                <syncfusion:DataGridTextColumn HeaderText="Handler" MappingName="HandledBy.FirstName"/>
+                <syncfusion:DataGridTextColumn HeaderText="Creation Date" MappingName="CreationDate.Date"/>
+                <syncfusion:DataGridTextColumn HeaderText="Status" MappingName="Status"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </Grid>
+</ContentPage>

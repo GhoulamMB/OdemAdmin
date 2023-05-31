@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OdemAdmin.Windows.UserInformationsPage">
+    <StackLayout Margin="4">
+        <Label Text="Edit User" FontAttributes="Bold" FontSize="18" />
+        <Entry Text="{Binding FirstName}" Placeholder="First Name" Margin="0,16,0,0" x:Name="FNameTextBox"/>
+        <Entry Text="{Binding LastName}" Placeholder="Last Name" Margin="0,12,0,0" x:Name="LNameTextBox"/>
+        <Entry.Keyboard>
+                <Keyboard x:FactoryMethod="get_Default">Default</Keyboard>
+            </Entry.Keyboard>
+        <Entry Text="{Binding Phone}" Placeholder="Phone Number" Margin="0,12,0,0" x:Name="PhoneTextBox"/>
+        <Entry Text="{Binding Email}" Placeholder="Email" Margin="0,12,0,0" x:Name="EmailTextBox"/>
+
+        <StackLayout Orientation="Horizontal" Margin="0,22,0,0" HorizontalOptions="Center">
+            <Button Text="Save" Margin="0,0,16,0" x:Name="SaveButton" Clicked="SaveButton_OnClicked" />
+            <Button Text="Cancel" Margin="16,0,0,0" x:Name="CancelButton" Clicked="CancelButton_OnClicked"/>
+        </StackLayout>
+        <StackLayout Margin="0,22,0,0">
+            <Button Text="Delete" BackgroundColor="Red" HorizontalOptions="Center" x:Name="DeleteButton" Clicked="DeleteButton_OnClicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

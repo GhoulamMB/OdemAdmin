@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:viewModels="using:OdemAdmin.ViewModels"
+             x:Class="OdemAdmin.Views.UsersView">
+    <ContentPage.BindingContext>
+        <viewModels:UsersViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <syncfusion:SfDataGrid
+            SelectionMode="Single"
+            AutoGenerateColumnsMode="None"
+            ItemsSource="{Binding Clients}"
+            GridLinesVisibility="Both"
+            HeaderGridLinesVisibility="Both"
+            ColumnWidthMode="Fill"
+            CellDoubleTapped="SfDataGrid_OnCellDoubleTapped">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridTextColumn HeaderText="Id" MappingName="Uid"/>
+                <syncfusion:DataGridTextColumn HeaderText="First Name" MappingName="FirstName"/>
+                <syncfusion:DataGridTextColumn HeaderText="Last Name" MappingName="LastName"/>
+                <syncfusion:DataGridTextColumn HeaderText="Email" MappingName="Email"/>
+                <syncfusion:DataGridTextColumn HeaderText="Phone" MappingName="Phone"/>
+                <syncfusion:DataGridTemplateColumn HeaderText="Address" MappingName="Address">
+                    <syncfusion:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label VerticalOptions="Center">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0}, {1}, {2}">
+                                        <Binding Path="Address.Street"/>
+                                        <Binding Path="Address.City"/>
+                                        <Binding Path="Address.ZipCode"/>
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                        </DataTemplate>
+                    </syncfusion:DataGridTemplateColumn.CellTemplate>
+                </syncfusion:DataGridTemplateColumn>
+                <syncfusion:DataGridTextColumn HeaderText="Wallet Id" MappingName="Wallet.Id"/>
+                <syncfusion:DataGridTextColumn HeaderText="Balance" MappingName="Wallet.Balance"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </Grid>
+</ContentPage>

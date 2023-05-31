@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:OdemAdmin.Resources"
+             x:Class="OdemAdmin.Windows.TicketInformationsPage">
+    <ContentPage.Resources>
+        <res:MessageTypeToStringConverter x:Key="MessageTypeToStringConverter"/>
+    </ContentPage.Resources>
+    <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="45" />
+    </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Column="0" ItemsSource="{Binding Messages}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label FontSize="18" LineHeight="2">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding isClientMessage, Converter={StaticResource MessageTypeToStringConverter}}" />
+                                        <Span Text="{Binding Content}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <VerticalStackLayout Grid.Column="1">
+                <Button Text="Open Ticket" x:Name="OpenTicketButton" Clicked="OpenTicketButton_OnClicked"/>
+                <Button Margin="0,8,0,0" Text="Close Ticket" x:Name="CloseTicketButton" Clicked="CloseTicketButton_OnClicked"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.25*" />
+        </Grid.ColumnDefinitions>
+
+        <Entry x:Name="messagebox" Grid.Column="0"/>
+        <Button x:Name="SendButton" Grid.Column="1" Text="Send" Clicked="SendButton_OnClicked" />
+    </Grid>
+</Grid>
+
+</ContentPage>

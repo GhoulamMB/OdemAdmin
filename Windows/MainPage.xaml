@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Odem.Admin.Windows.MainPage">
+    <ContentPage.Content>
+        <Grid Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Top label -->
+            <Label Grid.Row="0" Text="Odem Admin" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <!-- Custom buttons -->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Button 1 -->
+                <Button Grid.Column="0" Grid.Row="0" HeightRequest="120" WidthRequest="120" Text="Users" Clicked="Users_OnClicked"/>
+
+                <!-- Button 2 -->
+                <Button Grid.Column="1" Grid.Row="0" HeightRequest="120" WidthRequest="120" Text="Transactions" Clicked="Transactions_OnClicked"/>
+
+                <!-- Button 3 -->
+                <Button Grid.Column="0" Grid.Row="1" HeightRequest="120" WidthRequest="120" Text="Tickets" Clicked="Tickets_OnClicked"/>
+
+                <!-- Button 4 -->
+                <Button Grid.Column="1" Grid.Row="1" HeightRequest="120" WidthRequest="120" Text="Exit" Clicked="ExitButton_OnClicked"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
